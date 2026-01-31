@@ -227,3 +227,43 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+// ===== SERVICE DETAILS DYNAMIQUE =====
+const params = new URLSearchParams(window.location.search);
+const service = params.get("service");
+
+const servicesData = {
+  vitrine: {
+    image: "assets/img/services.jpg",
+    content: `
+      <h3>Création de sites web vitrines</h3>
+      <h4>Description</h4>
+      <p>Un site web vitrine est la première image numérique de votre entreprise...</p>
+      <h4>Fonctionnalités possibles</h4>
+      <ul>
+        <li>Page d'accueil professionnelle</li>
+        <li>Présentation de l'entreprise</li>
+        <li>Formulaire de contact</li>
+      </ul>
+    `
+  },
+  dynamique: {
+    image: "assets/img/services-2.jpg",
+    content: `
+      <h3>Développement de sites web dynamiques</h3>
+      <p>Sites interactifs avec gestion des données...</p>
+    `
+  },
+  plateforme: {
+    image: "assets/img/services-3.jpg",
+    content: `
+      <h3>Plateformes web complètes</h3>
+      <p>Solutions web robustes avec espace utilisateur...</p>
+    `
+  }
+};
+
+if (service && servicesData[service]) {
+  document.getElementById("service-image").src = servicesData[service].image;
+  document.getElementById("service-content").innerHTML = servicesData[service].content;
+}
